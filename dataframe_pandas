@@ -1,0 +1,110 @@
+Understanding data frames in Panda 
+
+
+1. Defining a data frame using pandas and to check the version of the installed pandas import pandas as pd && print(pd.__version__)
+
+############ Here the dataframe is defined as Dataframe.read_csv and in the example below Dataframe is named as pd #######
+
+################### some checks #####################
+
+----->this will display the number of the rows in the dataframe and by default it will display only 60 rows and the print (df) will return only the first and the last 5 rows.
+import pandas as pd (importing pandas)
+print(pd.options.display.max_rows)  
+----->To change this and make the number of the rows to the maximum for the display.
+import pandas as pd (importing pandas)
+pd.options.display.max_rows = 9999
+
+------> In case of the big data, most of the data is stored in the form of the JSON, so to import the JSON data into the data frame 
+import pandas as pd
+df = pd.read_json('data.json')
+print(df.to_string())
+
+------> Visualisation of the data imported 
+import pandas as pd
+df = pd.read_csv('data.csv')
+print(df.head(10)) #### This will show the first 10 head lines of the data if the number is not specified such as df.head() then it will shows the first 5 lines of the data frame. 
+print(df.tail(10)) #### This will show the first 10 tail lines of the data  
+****** Another function to import the csv data into the panda using the defined delimiter 
+import pandas as pd
+> df = pd.read_table("filename.csv", delimiter =", ")
+print(df.head())
+
+#############################################################################################
+-----> Before working with the statistical programming for the data science, you might want to clean the bad data such as Empty cells, Data in wrong format, Wrong data, Duplicates
+-----> Removing empty cells as the empty should not be a part of the analysis 
+import pandas as pd
+df = pd.read_csv('data.csv')
+new_df = df.dropna() ##### Return a new Data Frame with no empty cells
+print(new_df.to_string())
+-----> If you want to change the original DataFrame
+import pandas as pd
+df = pd.read_csv('data.csv')
+df.dropna(inplace = True)
+print(df.to_string())
+-----> Another way of dealing with the empty cells is to insert a value into the empty cell. 
+import pandas as pd
+df = pd.read_csv('data.csv')
+df.fillna(130, inplace = True) ##### In this a new value 130 is inserted into the same data frame. 
+-----> If you want to replace the empty values in a specified column 
+import pandas as pd
+df = pd.read_csv('data.csv')
+df["ColumnName"].fillna(130, inplace = True) #### Here ColumnName is the name of the column and 130 is the value which should be inserted and since it is inplace=TRUE means that do it in the same column. 
+-----> Another way of replacing the empty cells in the column with median, mean and mode, 
+----------------> Mean = the average value (the sum of all values divided by number of values 
+import pandas as pd
+df = pd.read_csv('data.csv')
+x = df["ColumnName"].mean()
+df["ColumnName"].fillna(x, inplace = True)
+---------------------> Median = the value in the middle, after you have sorted all values ascending
+import pandas as pd
+df = pd.read_csv('data.csv')
+x = df["ColumnName"].median()
+df["ColumnName"].fillna(x, inplace = True)
+------------------------------> Mode = the value that appears most frequently
+import pandas as pd
+df = pd.read_csv('data.csv')
+x = df["Calories"].mode()[0] #######[0] in the end means that the column is indexed as first
+df["Calories"].fillna(x, inplace = True)
+------> Before moving forward, if you have a wrong format, it should be fixed such as 
+     Duration          Date  Pulse  Maxpulse  Calories
+  0         60  '2020/12/01'    110       130     409.1
+  1         60  '2020/12/02'    117       145     479.0
+  2         60  '2020/12/03'    103       135     340.0  ###### Check out the date in the row 4 and 5 are not correct. 
+  3         45  '2020/12/04'    109       175     282.4
+  4        45           NaN    100       119     282.0
+  5        60      20201226    100       120     250.0
+
+import pandas as pd
+df = pd.read_csv('data.csv')
+df['Date'] = pd.to_datetime(df['Date'])
+print(df.to_string())
+------> after the implication, the revised table is 
+  0         60  '2020/12/01'    110       130     409.1
+  1         60  '2020/12/02'    117       145     479.0
+  2         60  '2020/12/03'    103       135     340.0  ###### Check out the date in the row 4 shows a NA value and the 5 is corrected. 
+  3         45  '2020/12/04'    109       175     282.4
+  4        45           NaT    100       119     282.0
+  5        60   '2020/12/26'    100       120     250.0
+----------------> Now in this case, the NA value should be dropped such as 
+df.dropna(subset=['Date'], inplace = True)
+--------------------------------> Correcting the number format 
+see the table below and this table has one number incorrect as this is not the pattern followed 
+     Duration          Date  Pulse  Maxpulse  Calories
+  0         60  '2020/12/01'    110       130     409.1
+  1         60  '2020/12/02'    117       145     479.0
+  2         60  '2020/12/03'    103       135     340.0
+  3         45  '2020/12/04'    109       175     282.4
+  4         45  '2020/12/05'    117       148     406.0
+  5         60  '2020/12/06'    102       127     300.0
+  6         60  '2020/12/07'    110       136     374.0
+  7        450  '2020/12/08'    104       134     253.3 ###### This number 450 is different from the rest of the number. 
+----------------> Replacing the value 
+df.loc[7, 'Duration'] = 45 in this the number 450 is replaced by 45, at position 7. 
+---------------->  In case of large datasets, you can loop through the multiple values. 
+for x in df.index: if df.loc[x, "Duration"] > 120: df.loc[x, "Duration"] = 120 suggesting that loop through the duration column and if the value is higher than 120, set it to 120:
+-------------------> In case of large datasets, you can also drop those rows and do through the loop 
+for x in df.index: if df.loc[x, "Duration"] > 120: df.drop(x, inplace = True) suggesting that loop through the duration column and where the value is greater than 120, drop those rows. 
+-------------------------------------> Removing the duplicated values 
+print(df.duplicated()) will return the duplicated items and 
+df.drop_duplicates(inplace = True) will remove all the duplicates and with in the data frame and will not give a new data frame.
+
