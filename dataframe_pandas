@@ -1,7 +1,9 @@
 Understanding data frames in Panda 
 
 
-1. Defining a data frame using pandas and to check the version of the installed pandas import pandas as pd && print(pd.__version__)
+1. Defining a data frame using pandas and to check the version of the installed pandas from heapq import merge
+from msilib.schema import tables
+import pandas as pd && print(pd.__version__)
 
 ############ Here the dataframe is defined as Dataframe.read_csv and in the example below Dataframe is named as pd #######
 
@@ -116,7 +118,23 @@ df.head() # viewing the first few lines of the data frame
 df.shape() # counting the summary or the shape of the data frame
 
 # Merge, Join and Concatenate data frames
+import pandas as pd
+df1 = pd.read_csv('data.csv') # This is the first dataframe
+df2 = pd.read_csv('data.csv') # This is the second dataframe
 
+    #Merging of the dataframe has only few options to consider, most of which is focussed on left join, right join, outer join and inner join. 
+    # 1. Case 1: Where both the dataframes have the same columns id
+    df.merged = pd.merge(df1,df2) # in this case, by default the how is set to inner, so only those cases will be merged which are at intersection.
+    
+    # 2. Case 2: Where both the datasets have unequal list and you want to merge all the datasets into one tables
+     df.merged = pd.merged (df1, df2, how='left') This will keep the dataframe of the left intact and will incorporate all the elements of the right dataset.
+     
+    # 3. Case 3: Where both the datasets have unqeual list and you want to merge all the datasets into one tables
+     df.merged = pd.merged (df1, df2, how = 'right') This will return all the values in the left that matches to the right frame. So, this is exactly similiar to the inner join)
+
+    # 4. Case 4: 
+     
+    
 
 
 
