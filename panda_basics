@@ -115,3 +115,26 @@ dtype: object
 
 ## In the above indexing, see the difference between the a) and b), in case of the a), complete index is defined, whereas in case of b), althrough the complete  index is defined, but the index frame is also defined, so pd.Series(data, index=index)
 
+# Combining the two data frames in pandas 
+
+# First data frame 
+population_dict = {'California': 38332521,
+                   'Texas': 26448193,
+                   'New York': 19651127,
+                   'Florida': 19552860,
+                   'Illinois': 12882135}
+population = pd.Series(population_dict)
+# Second data frame
+area_dict = {'California': 423967, 'Texas': 695662, 'New York': 141297,
+             'Florida': 170312, 'Illinois': 149995}
+area = pd.Series(area_dict)
+
+# Combining the above two data frames 
+states = pd.DataFrame({'population': population,
+                       'area': area})
+states
+
+# Now if we see the index of the states then 
+
+states.index # calling index as a method
+states.columns # calling columns as a method 
