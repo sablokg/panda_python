@@ -69,7 +69,11 @@ dict= { 'list': 24,
         'true':28,
         'learn':28
 }
-# Understand the dictionary, '' is representing a string, : is representing a scalar and the combined is representing a sequence to scalar mapping 
+dict 
+{'list': 24, 'true': 28, 'learn': 28}
+type(dict)
+<class 'dict'> <- To understand the type of the dict, use type()
+ # Understand the dictionary, '' is representing a string, : is representing a scalar and the combined is representing a sequence to scalar mapping 
 
 data = pd.Series(dict)
 data
@@ -77,5 +81,22 @@ list     24
 true     28
 learn    28
 dtype: int64
+# Applying the slice on the dict pattern
+data ['list':'learn']
+list     24
+true     28
+learn    28
+dtype: int64
 
+# Assigining the same key to the series 
+
+pd.Series(5, index=[100, 200, 300]) 
+100    5
+200    5
+300    5
+dtype: int64
+pd.Series('list', index=[100, 200, 300])
+100    list
+200    list
+300    list
 
