@@ -108,3 +108,12 @@ for x in df.index: if df.loc[x, "Duration"] > 120: df.drop(x, inplace = True) su
 print(df.duplicated()) will return the duplicated items and 
 df.drop_duplicates(inplace = True) will remove all the duplicates and with in the data frame and will not give a new data frame.
 
+# Estimating the number of the rows and columns also called as shape in pandas data frame
+
+import pandas as pd
+df = pd.read_csv('data.csv')
+df.head() # viewing the first few lines of the data frame
+df.shape() # counting the summary or the shape of the data frame
+
+
+
