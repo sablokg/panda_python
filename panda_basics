@@ -100,3 +100,18 @@ pd.Series('list', index=[100, 200, 300])
 200    list
 300    list
 
+# Another way of indexing the data in the series is 
+
+a) pd.Series({2:'a', 1:'b', 3:'c'})
+1    b
+2    a
+3    c
+dtype: object
+
+b) pd.Series({2:'a', 1:'b', 3:'c'}, index=[3, 2])
+3    c
+2    a
+dtype: object
+
+## In the above indexing, see the difference between the a) and b), in case of the a), complete index is defined, whereas in case of b), althrough the complete  index is defined, but the index frame is also defined, so pd.Series(data, index=index)
+
