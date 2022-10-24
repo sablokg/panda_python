@@ -63,5 +63,19 @@ data [2:5]
 3    0.75
 7    1.00
 
+# reading a dictonary as data frame and then slicing it for the information
+
+dict= { 'list': 24, 
+        'true':28,
+        'learn':28
+}
+# Understand the dictionary, '' is representing a string, : is representing a scalar and the combined is representing a sequence to scalar mapping 
+
+data = pd.Series(dict)
+data
+list     24
+true     28
+learn    28
+dtype: int64
 
 
