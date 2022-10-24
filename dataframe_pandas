@@ -115,5 +115,11 @@ df = pd.read_csv('data.csv')
 df.head() # viewing the first few lines of the data frame
 df.shape() # counting the summary or the shape of the data frame
 
+# Merge, Join and Concatenate data frames
+
+
+
+
+
 
 
