@@ -167,11 +167,24 @@ df2 = pd.read_csv('data.csv') # This is the second dataframe
 # 1. Both the datsets have unqueal columns so to get all the columns 
 
 df.concat = pd.concat([df1, df2]) <- This will give everything including the duplicated ones. Now to remove the duplicated ones, we can index it. 
-df_no_duplicates = df.concat.reset_index(drop=True), you can do this also in th same function like given below: 
+df_no_duplicates = df.concat.reset_index(drop=True), you can do this also in the same function like given below: 
 df.concat = pd.concat ([df1, df2], ignore_index=TRUE) # concatentate both the indexes and drop the duplicates. 
 df.concat = pd.concat([df1, df2], axis= 1) # With axis= 1 we are defining the column on which the concat needs to be performed. 
 
 ### Merge and Join use key mapping where as Concat doesnt. Concate works both horizontally and vertically. 
+
+# Updating the table with another table: In this you can use two functions such as combine_first() and update()
+import pandas as pd
+df1 = pd.read_csv('data.csv') # This is the first dataframe
+df2 = pd.read_csv('data.csv') # This is the second datafram
+
+df_new = df1.combine_first(df2) # This will replace the missing values in the df1 from df2. 
+
+df_new = df1.update(df2, overwrite= TRUE) # This will update the values in the df1 from df2 and will overwrite the values.  
+df_new = df1.update(df2, overwrite= FALSE) # This will update the values in the df1 from df2 and will not overwrite the values.  
+
+
+
 
 
 
