@@ -3,6 +3,7 @@ Understanding data frames in Panda
 
 1. Defining a data frame using pandas and to check the version of the installed pandas from heapq import merge
 from msilib.schema import tables
+from pickle import TRUE
 from turtle import right
 import pandas as pd && print(pd.__version__)
 
@@ -188,7 +189,7 @@ pip install tabula # for the installation of the library
 
 import tabula
 myfile = 'filename.pdf'
-mytable = tabula.read_pdf(myfile, pages = 1, multiple_tables = True) # Extract the tables from the PDF and keep them as independent tables
+mytable = tabula.read_pdf(myfile, pages = 1, multiple_tables = TRUE) # Extract the tables from the PDF and keep them as independent tables
 
 import tabula
 myfile = 'filename.pdf'
