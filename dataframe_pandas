@@ -169,6 +169,10 @@ df2 = pd.read_csv('data.csv') # This is the second dataframe
 df.concat = pd.concat([df1, df2]) <- This will give everything including the duplicated ones. Now to remove the duplicated ones, we can index it. 
 df_no_duplicates = df.concat.reset_index(drop=True), you can do this also in th same function like given below: 
 df.concat = pd.concat ([df1, df2], ignore_index=TRUE) # concatentate both the indexes and drop the duplicates. 
+df.concat = pd.concat([df1, df2], axis= 1) # With axis= 1 we are defining the column on which the concat needs to be performed. 
+
+### Merge and Join use key mapping where as Concat doesnt. Concate works both horizontally and vertically. 
+
 
 
 
