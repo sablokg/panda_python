@@ -183,7 +183,22 @@ df_new = df1.combine_first(df2) # This will replace the missing values in the df
 df_new = df1.update(df2, overwrite= TRUE) # This will update the values in the df1 from df2 and will overwrite the values.  
 df_new = df1.update(df2, overwrite= FALSE) # This will update the values in the df1 from df2 and will not overwrite the values.  
 
+### Making dataframes from PDF files: There is a library for the extraction of the tables from the PDFs and the library is called as tabula
+pip install tabula # for the installation of the library
 
+import tabula
+myfile = 'filename.pdf'
+mytable = tabula.read_pdf(myfile, pages = 1, multiple_tables = True) # Extract the tables from the PDF and keep them as independent tables
+
+import tabula
+myfile = 'filename.pdf'
+mytable = tabula.read_pdf(myfile, pages = 1, multiple_tables = FALSE) # Extract the tables from the PDF and make a single table
+tabula.convert_into(myfile, "file.csv") # export the table into the CSV format
+
+import tabula
+myfile = 'filename.pdf'
+mytable = tabula.read_pdf(myfile, pages = 1, multiple_tables = FALSE)# Extract the tables from the PDF and make a single table
+tabula.convert_into(myfile, "file.csv") # export the table into the CSV format
 
 
 
