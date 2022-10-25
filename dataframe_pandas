@@ -153,7 +153,10 @@ df.merged = df1.join(df2, rsuffix=right) # This is telling that join df1 with df
 
 df.merged = df1.set_inex ('column name').join (df2.set_index('column name')) In this we are indexing the column that you have the same tags and avoiding the duplicates. 
 
+# Append and concatentation fucntions are called as the functions of the dataframe means it will require 2 variables to read append (x,y) or concat (x,y) similar to the join (x,y)
+# Append function will not filter anything in the tables, it will simply append the tables, it is similar to the PASTE function of the linux. 
 
+df.append = df1.append(df2, ignore_index=True) 
      
     
 
