@@ -201,7 +201,9 @@ myfile = 'filename.pdf'
 mytable = tabula.read_pdf(myfile, pages = 1, multiple_tables = FALSE)# Extract the tables from the PDF and make a single table
 tabula.convert_into(myfile, "file.csv") # export the table into the CSV format
 
+These are for the import and manipulation of the data in pandas. I shall be continously updating the information on data frame to this so that you can have everything related to data frame in one tag. 
 
+Cheers Gaurav
 
 
 
