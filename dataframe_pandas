@@ -157,6 +157,21 @@ df.merged = df1.set_inex ('column name').join (df2.set_index('column name')) In 
 # Append function will not filter anything in the tables, it will simply append the tables, it is similar to the PASTE function of the linux. 
 
 df.append = df1.append(df2, ignore_index=True) 
+
+# Concat is the same as merging two dataframes. Lets start with this 
+
+import pandas as pd
+df1 = pd.read_csv('data.csv') # This is the first dataframe
+df2 = pd.read_csv('data.csv') # This is the second dataframe
+
+# 1. Both the datsets have unqueal columns so to get all the columns 
+
+df.concat = pd.concat([df1, df2]) <- This will give everything including the duplicated ones. Now to remove the duplicated ones, we can index it. 
+df_no_duplicates = df.concat.reset_index(drop=True), you can do this also in th same function like given below: 
+df.concat = pd.concat ([df1, df2], ignore_index=TRUE) # concatentate both the indexes and drop the duplicates. 
+
+
+
      
     
 
