@@ -1,4 +1,5 @@
 Understanding data frames in Panda 
+Practicing datasets: https://docs.openml.org/Datasets/
 
 
 1. Defining a data frame using pandas and to check the version of the installed pandas from heapq import merge
@@ -277,6 +278,10 @@ for name in glob.glob('/home/data/*'): # calling all the files in the directory
 all_files = glob.glob(path + "/**/*.csv")
 df = pd.concat((pd.read_csv(f) for f in all_files))
 print(df)
+
+
+
+
 
 
 
