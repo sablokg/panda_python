@@ -4,6 +4,7 @@ Understanding data frames in Panda
 1. Defining a data frame using pandas and to check the version of the installed pandas from heapq import merge
 from msilib.schema import tables
 from pickle import TRUE
+from tkinter import Frame
 from turtle import right
 import pandas as pd && print(pd.__version__)
 
@@ -201,15 +202,55 @@ myfile = 'filename.pdf'
 mytable = tabula.read_pdf(myfile, pages = 1, multiple_tables = FALSE)# Extract the tables from the PDF and make a single table
 tabula.convert_into(myfile, "file.csv") # export the table into the CSV format
 
-These are for the import and manipulation of the data in pandas. I shall be continously updating the information on data frame to this so that you can have everything related to data frame in one tag. 
 
-Cheers Gaurav
+## Unpacking and contacting multiple files in the panda frame
+
+1. Lets suppose you have multiple files and you want to convert them into the panda frame
+
+a) This will import all the CSV files into the pandas frame, now lets read the code, before that since importing multiple files, is a recursive function, so lets understand the glob function in python, which searches the files recursively
 
 
+glob function --->  glob.glob(pathname, *, recursive=False), by default the recursive is set to false, means it will not search the files recursively, by you can set the recursive to TRUE then it will match True “**” followed by path separator('./**/').
+(geeksforgeerks.org). This is the same as the find function in bash: find . -iname filename (listing all the files in the directory . with the name given in the -iname).
 
-     
-    
+import glob
+# Returns a list of names in list files.
+print("Using glob.glob()")
+files = glob.glob('/home/geeks/Desktop/**/*.txt', recursive = True) # check out the ** which is indicating the recursive true. 
+for file in files:
+    print(file)
+  
+  
+# It returns an iterator which will be printed simultaneously.
+print("\nUsing glob.iglob()")
+for filename in glob.iglob('/home/geeks/Desktop/gfg/**/*.txt',recursive = True):
+    print(filename)
 
+Now after finding all the files list, its time to make a dataframe out of it. 
+
+a) Making a data frame from multiple CSV files with in a folder
+
+import glob
+import os
+import pandas as pd
+all_files = glob.glob("folder/*.csv") 
+df = pd.concat((pd.read_csv(f) for f in all_files))
+print(df)
+
+b) Making a data from from multiple CSV files from a specified folder, where PATH_TO_FOLDER indicates the PATH. 
+
+home = os.path.expanduser("~")
+path = f"{home}PATH_TO_FOLDER"
+all_files = glob.glob(path + "/*.csv")
+df = pd.concat((pd.read_csv(f) for f in all_files))
+print(df)
+
+c) Making a data frame from the specificed folder which can be a nested folder. 
+
+path = f"{home}PATH_TO_FOLDER"
+all_files = glob.glob(path + "/**/*.csv")
+df = pd.concat((pd.read_csv(f) for f in all_files))
+print(df)
 
 
 
