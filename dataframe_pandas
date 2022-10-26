@@ -279,6 +279,30 @@ all_files = glob.glob(path + "/**/*.csv")
 df = pd.concat((pd.read_csv(f) for f in all_files))
 print(df)
 
+# To get the path of the foler you can use os.getcwd() and to change the directory you can use os.chdir().
+
+import os
+print(os.getcwd())
+os.chdir('/Users/name/Documents')
+print(os.getcwd())
+
+# Taking into above steps: a complete functional code for the merging panda frame from multiple CVS will be 
+
+import os
+print(os.getcwd())
+os.chdir('/Users/name/Documents')
+print(os.getcwd())
+import glob
+import os
+import pandas as pd
+for name in glob.glob('/home/data/*'): # calling all the files in the directory
+    print(name)
+all_files = glob.glob("folder/*.csv") 
+df = pd.concat((pd.read_csv(f) for f in all_files))
+print(df)
+
+
+
 
 
 
