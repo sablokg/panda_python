@@ -187,7 +187,7 @@ df_new = df1.update(df2, overwrite= TRUE) # This will update the values in the d
 df_new = df1.update(df2, overwrite= FALSE) # This will update the values in the df1 from df2 and will not overwrite the values.  
 
 ### Making dataframes from PDF files: There is a library for the extraction of the tables from the PDFs and the library is called as tabula
-pip install tabula # for the installation of the library
+pip install tabula # for the installation of the library. A similar function also present in R : https://cran.r-hub.io/web/packages/tabulizer/vignettes/tabulizer.html
 
 import tabula
 myfile = 'filename.pdf'
@@ -300,9 +300,6 @@ for name in glob.glob('/home/data/*'): # calling all the files in the directory
 all_files = glob.glob("folder/*.csv") 
 df = pd.concat((pd.read_csv(f) for f in all_files))
 print(df)
-
-
-
 
 
 
