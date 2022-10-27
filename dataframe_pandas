@@ -301,6 +301,18 @@ all_files = glob.glob("folder/*.csv")
 df = pd.concat((pd.read_csv(f) for f in all_files))
 print(df)
 
+# To get the summary of the data frame as to see which are the null values and how much and what kind of dataset you have, you can use two commands 
+# which will give information and will describe your data frame. 
+import pandas as pd
+df1 = pd.read_csv('data.csv')
+df1.describe()
+df1.info()
+
+
+
+
+
+
 
 
 
