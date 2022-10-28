@@ -308,6 +308,17 @@ df1 = pd.read_csv('data.csv')
 df1.describe()
 df1.info()
 
+# Changing the type pattern in the python pandas
+
+import pandas as pd
+df1 = pd.read_csv('data.csv')
+df1.describe()
+df1.info()
+df1[:30] # First thirty rows of the data frame, now see that a slice function has been used to list [start:stop]. 
+
+type(df1.columnname[]) # so here i am asking the type of the column name in the df1. 
+df1.cloumnname = df1.columnname.astype ('init64') # in this you are changing the type of the column
+
 
 
 
