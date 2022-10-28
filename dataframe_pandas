@@ -3,7 +3,7 @@ Practicing datasets: https://docs.openml.org/Datasets/
 
 
 1. Defining a data frame using pandas and to check the version of the installed pandas from heapq import merge
-from msilib.schema import tables
+from msilib.schema import ServiceInstall, tables
 from pickle import TRUE
 from tkinter import Frame
 from turtle import right
@@ -308,7 +308,7 @@ df1 = pd.read_csv('data.csv')
 df1.describe()
 df1.info()
 
-# Changing the type pattern in the python pandas
+# Changing the type pattern in the python pandas 
 
 import pandas as pd
 df1 = pd.read_csv('data.csv')
@@ -316,10 +316,37 @@ df1.describe()
 df1.info()
 df1[:30] # First thirty rows of the data frame, now see that a slice function has been used to list [start:stop]. 
 
+Basic concept: 
+    
+    df1 = df1.astype(str) Here i have applied the str type to the entire data series 
+    df1 = df1.astype ({'colunname: type'}) Here i have applied to a specific column of the series 
+    
+
 type(df1.columnname[]) # so here i am asking the type of the column name in the df1. 
 df1.cloumnname = df1.columnname.astype ('init64') # in this you are changing the type of the column
 
-df1 = df.astype({"Column1":'type', "Column2":'type'}) # .astype also accepts dictionary so you can pass multiple columns and data types accordingly. 
+df1 = df.astype({"Column1":'type', "Column2":'type'}) # .astype also accepts dictionary so you can pass multiple columns and data types accordingly.
+
+# Applying pandas.to_numeric, pandas.to_datetime, and pandas.to_timedelta
+
+df1 = df.apply (pd.to_numeric) # this will convert the complete data frame to numeric. However, if you want to apply this to only some columns then make a list of those columns such as
+df1 = df [['Columnname1', 'Columnname2']].apply (pd.to_numeric)
+
+# Another way to check the data types is using .dtypes 
+import pandas as pd
+df1 = pd.read_csv('data.csv')
+df1.describe()
+df1.info()
+df1.dtypes 
+
+and to change the type of the column 
+
+df1 ['Columnname'] = df1['Columname'].astype ('int or str or object or category') 
+##### .infer_objects() and .convert_dtypes to PUT. 
+
+
+ 
+
 
  
 
