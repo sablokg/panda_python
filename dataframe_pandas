@@ -319,6 +319,10 @@ df1[:30] # First thirty rows of the data frame, now see that a slice function ha
 type(df1.columnname[]) # so here i am asking the type of the column name in the df1. 
 df1.cloumnname = df1.columnname.astype ('init64') # in this you are changing the type of the column
 
+df1 = df.astype({"Column1":'type', "Column2":'type'}) # .astype also accepts dictionary so you can pass multiple columns and data types accordingly. 
+
+ 
+
 
 
 
