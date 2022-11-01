@@ -10,6 +10,31 @@ from turtle import right
 import pandas as pd && print(pd.__version__)
 
 ############ Here the dataframe is defined as Dataframe.read_csv and in the example below Dataframe is named as pd #######
+Indexing the Datasets
+import pandas as pd (importing pandas)
+df = pd.read_csv('data.csv')
+index_df = df.index
+columns = df.columns
+values = df.values 
+# checking type of index_df, columns, values
+print (type(df_index)) or print (type(columns)) or print(type(values))
+# You can index a column by index= ['columnname'] or by simply appending it to the index such as df.cloumnname
+# You can also make new indexes by making a specific columns as an index of a dataframe such as 
+
+import pandas as pd (importing pandas)
+df = pd.read_csv('data.csv')
+columnname= d['columname']
+columname
+
+Now you can perform all the arthimetic on this column alone such as +, -, *, /, //, %, **
+colunname.value_counts()
+columnname.value_counts(normalize=True)
+columname + 3
+columname * 3
+columname - 3
+columname / 3
+columname // 3
+columname ** 3
 
 ################### some checks #####################
 
@@ -46,6 +71,7 @@ print(new_df.to_string())
 import pandas as pd
 df = pd.read_csv('data.csv')
 df.dropna(inplace = True)
+df.notnull() # This will list all the null columns as True or the false. 
 print(df.to_string())
 -----> Another way of dealing with the empty cells is to insert a value into the empty cell. 
 import pandas as pd
@@ -120,6 +146,7 @@ import pandas as pd
 df = pd.read_csv('data.csv')
 df.head() # viewing the first few lines of the data frame
 df.shape() # counting the summary or the shape of the data frame
+df ['columnname'].count # counting the column numbers
 
 # Merge, Join and Concatenate data frames
 # left join = Use keys from left frame 
@@ -223,8 +250,14 @@ for file in files:
   
 # It returns an iterator which will be printed simultaneously.
 print("\nUsing glob.iglob()")
-for filename in glob.iglob('/home/geeks/Desktop/gfg/**/*.txt',recursive = True):
+for filename in glob.iglob('/home/geeks/Desktop/**/*.txt',recursive = True):
     print(filename)
+
+# Another way to walk through a directory and listing all the files in the
+import os
+for dirname, _, filenames in os.walk('../Desktop/data/'):
+    for filename in filenames:
+        print(os.path.join(dirname, filename))
     
     
  b) Now if you want to search with the file name or the wildcard like you do in bash 
@@ -336,8 +369,11 @@ df1 = df [['Columnname1', 'Columnname2']].apply (pd.to_numeric)
 import pandas as pd
 df1 = pd.read_csv('data.csv')
 df1.describe()
+df1.size()
+df1.shape()
 df1.info()
-df1.dtypes 
+df1.dtypes
+df.get_dtype_counts() to count each type of the data present in the dataframe
 
 and to change the type of the column 
 
