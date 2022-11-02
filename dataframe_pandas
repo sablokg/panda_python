@@ -381,6 +381,8 @@ df1 ['Columnname'] = df1['Columname'].astype ('int or str or object or category'
 ##### .infer_objects() and .convert_dtypes to PUT. 
 
 
+
+
  
 
 
