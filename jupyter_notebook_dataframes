@@ -1,2 +1,12 @@
 This folder will contain the functional codes for the juptyer notebook on all the dataframes discussed
 Practising datasets: https://docs.openml.org/Datasets/
+Installing Jupyter notebook:
+pip install --upgrade jupyterhub
+pip install --upgrade --user nbconvert
+You can also have datasets from 
+
+[Link]https://pydataset.readthedocs.io/en/latest/
+install using 
+$ pip install git+https://github.com/renero/dataset
+  import pydataset
+  pydataset.data()
