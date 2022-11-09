@@ -1,0 +1,138 @@
+# Cleaning datasets for pandas processing
+
+Before working with the statistical programming for the data science, you might want to clean the bad data such as Empty cells, Data in wrong format, Wrong data, Duplicates
+
+Removing empty cells as the empty should not be a part of the analysis. Return a new Data Frame with no empty cells 
+```
+import pandas as pd
+df = pd.read_csv('data.csv')
+new_df = df.dropna() 
+print(new_df.to_string())
+```
+
+If you want to change the original DataFrame. This will list all the null columns as True or the false.
+```
+import pandas as pd
+df = pd.read_csv('data.csv')
+df.dropna(inplace = True)
+df.notnull()  
+print(df.to_string())
+```
+
+Another way of dealing with the empty cells is to insert a value into the empty cell. In this a new value 130 is inserted into the same data frame.
+```
+import pandas as pd
+df = pd.read_csv('data.csv')
+df.fillna(130, inplace = True)
+``` 
+
+If you want to replace the empty values in a specified column.Here ColumnName is the name of the column and 130 is the value which should be inserted and since it is inplace=TRUE means that do it in the same column. 
+ 
+```
+import pandas as pd
+df = pd.read_csv('data.csv')
+df["ColumnName"].fillna(130, inplace = True)
+```
+ 
+Another way of replacing the empty cells in the column with median, mean and mode, 
+
+Mean = the average value (the sum of all values divided by number of values 
+```
+import pandas as pd
+df = pd.read_csv('data.csv')
+x = df["ColumnName"].mean()
+df["ColumnName"].fillna(x, inplace = True)
+```
+
+Median = the value in the middle, after you have sorted all values ascending
+```
+import pandas as pd
+df = pd.read_csv('data.csv')
+x = df["ColumnName"].median()
+df["ColumnName"].fillna(x, inplace = True)
+```
+
+Mode = the value that appears most frequently
+```
+import pandas as pd
+df = pd.read_csv('data.csv')
+x = df["Calories"].mode()[0] #######[0] in the end means that the column is indexed as first
+df["Calories"].fillna(x, inplace = True)
+```
+
+Before moving forward, if you have a wrong format, it should be fixed such as, check out the date in the row 4 and 5 are not correct.
+```
+     Duration          Date  Pulse  Maxpulse  Calories
+  0         60  '2020/12/01'    110       130     409.1
+  1         60  '2020/12/02'    117       145     479.0
+  2         60  '2020/12/03'    103       135     340.0   
+  3         45  '2020/12/04'    109       175     282.4
+  4        45           NaN    100       119     282.0
+  5        60      20201226    100       120     250.0
+
+import pandas as pd
+df = pd.read_csv('data.csv')
+df['Date'] = pd.to_datetime(df['Date'])
+print(df.to_string())
+
+```
+
+after the implication, the revised table is, check out the date in the row 4 shows a NA value and the 5 is corrected.
+
+```
+  0         60  '2020/12/01'    110       130     409.1
+  1         60  '2020/12/02'    117       145     479.0
+  2         60  '2020/12/03'    103       135     340.0   
+  3         45  '2020/12/04'    109       175     282.4
+  4        45           NaT    100       119     282.0
+  5        60   '2020/12/26'    100       120     250.0
+  
+```
+
+Now in this case, the NA value should be dropped such as 
+```
+df.dropna(subset=['Date'], inplace = True)
+```
+
+Correcting the number format 
+see the table below and this table has one number incorrect as this is not the pattern followed, number 450 is different from the rest of the number. 
+
+```
+     Duration          Date  Pulse  Maxpulse  Calories
+  0         60  '2020/12/01'    110       130     409.1
+  1         60  '2020/12/02'    117       145     479.0
+  2         60  '2020/12/03'    103       135     340.0
+  3         45  '2020/12/04'    109       175     282.4
+  4         45  '2020/12/05'    117       148     406.0
+  5         60  '2020/12/06'    102       127     300.0
+  6         60  '2020/12/07'    110       136     374.0
+  7        450  '2020/12/08'    104       134     253.3 
+```
+
+Replacing the value, in this the number 450 is replaced by 45, at position 7. 
+
+```
+df.loc[7, 'Duration'] = 45 
+```
+ 
+In case of large datasets, you can loop through the multiple values. suggesting that loop through the duration column and if the value is higher than 120, set it to 120
+
+```
+for x in df.index: if df.loc[x, "Duration"] > 120: df.loc[x, "Duration"] = 120 
+```
+
+In case of large datasets, you can also drop those rows and do through the loop suggesting that loop through the duration column and where the value is greater than 120, drop those rows.
+
+```
+for x in df.index: if df.loc[x, "Duration"] > 120: df.drop(x, inplace = True) 
+```
+
+
+Removing the duplicated values, this will remove all the duplicates and with in the data frame and will not give a new data frame.
+
+```
+print(df.duplicated()) will return the duplicated items and 
+df.drop_duplicates(inplace = True) 
+```
+With this you can do all the cleaning of the data before processing for the statsitical analysis. I thank w3 schools for the dataset. 
+
