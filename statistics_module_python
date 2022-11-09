@@ -1,0 +1,59 @@
+Statistics Module 
+
+   
+# Now lets see all these functions in details: 
+
+# If you really want to sum then use the math function of the sum 
+   math.fsum(iterable)
+You can use the math.fsum on any list, tuple or set
+
+$ import math
+   print(math.fsum(range(0,100))) # fsum on range
+   
+$ import math
+   my_list=[1,2,3,4,5,6,7,8,9,10]
+   print(math.fsum(my_list)) # fsum on list
+   
+$ import math
+   my_tuple=(1.3,4.5,6.2,7.1,3.4,5.5)
+   print(math.fsum(my_tuple)) # fsum on tuple
+   
+$ import math
+   my_set={1.3,4.5,6.2,7.1,3.1,4.6}
+   print(math.fsum(my_set)) # fsum on set 
+
+$ range (100)
+   print(math.fsum(range(100))) 
+
+$ for x in range(2, 30, 3)
+   print(math.fsum(range(2, 30, 3)))
+
+# math.fabs(number) is an function to get the absolute number of the number,always retrun a floating value
+n1= int(46)
+n2= float(54)
+print (maths.fabs(n1))
+print (maths.fabs(n2))
+add = n1+float(n2)
+
+# applying maths.fabs on a list and tuple 
+
+import math
+s= [10,20,30,40,50]
+t = (10,20,30,40,50)
+print (maths.fabs(t[3]*l([4]))) # selecting an index of s and an index of t. 
+
+# math.sqrt is a function to calculate square root of the number
+
+$ import math 
+$ import cmath # importing complex number math 
+$ math.sqrt(number)
+$ print(math.sqrt(81))
+$ print(cmath.sqrt(5 + 4j))
+$ print (math.sqrt(math.pi))
+
+
+x = -81
+if int(x) >= 0:
+    math.sqrt(x)
+else:
+    print("You can not calculate square root of negative number")
