@@ -1,0 +1,88 @@
+# Implementation of Matplot for plotting
+
+Implementing statistical functions is always a cumbersome task and a lot of implementation codes are difficult to understand as they are complex embedded into several lines of code or they have been so complexly written that understanding for a layman is so difficult. matplot is an exciting library and you can use it for various plotting functions, unless you have a strong background in matplot, working on seaborn and plotnine or plotly will not be of worth. Understand the matplot in a very simple terms below
+
+However, it is not so difficult to understand. Follow along on this article and you will learn some of the matplot functions
+
+Here i am importing the matplot lib and creating an alias for the matplot. 
+```
+from matplotlib import pyplot at plt
+``` 
+
+Plotting an simple x and y axis on the horizontal and the vertical axis with all default values and color arrangements.
+
+```
+plt.plot(x_axis, y_axis)
+plt.show()
+``` 
+Plotting an axis from a frame and assigning a label. You can also plot from a defined frame after importing it from the pandas such as 
+
+```
+import pandas as pd
+df=pd.read_csv('filename.csv')
+x.frame = df['column1']
+y.frame = df['column2']
+plt.plot (x.frame, y.frame, label = 'text')
+plt.show
+``` 
+Now lets cutomize the plots by plotting multiple frames and assigning a label and a legend. Each frame to be plotted in the same figure should be called separately and added to the frame. The definition of the frame i gave in the upper example. 
+
+```
+plt.plot(x.frame, y.frame, label='text')
+plt.plot(a.frame, b.frame, label = 'test')
+plt.legend()
+plt.show()
+``` 
+
+Cutomizing the plot by plotting multiple frames, assigning a label to axis and adding a legend
+
+```
+plt.plot(x.frame, y.frame, label='text')
+plt.plot(a.frame, b.frame, label = 'test')
+plt.xlabel("string")
+plt.ylabel ("label")
+plt.title("Title")
+plt.legend()
+plt.show()
+``` 
+Cutomizing the plot by plotting multiple frames, assigning a label to axis, adding a legend, adding a color to the legend, adding a text 
+
+```
+plt.plot(x.frame, y.frame, label='text')
+plt.plot(a.frame, b.frame, label = 'test')
+plt.xlabel("string")
+plt.ylabel ("label")
+plt.text(xcoord, ycoord, "Title of the text")
+plt.title("Title=, fontsize=10)
+plt.legend(, colour= "green")
+plt.show()
+``` 
+Cutomizing the plot by plotting multiple frames, assigning a label to axis, adding a legend, adding a color to the legend, adding a text, adding line width 
+
+```
+plt.plot(x.frame, y.frame, label='text')
+plt.plot(a.frame, b.frame, label = 'test')
+plt.xlabel("string")
+plt.ylabel ("label")
+plt.text(xcoord, ycoord, "Title of the text")
+plt.plot(x,y, linewidth=1)
+plt.title("Title=, fontsize=10)
+plt.legend(, colour= "green")
+plt.show()
+``` 
+Cutomizing the plot by plotting multiple frames, assigning a label to axis, adding a legend, adding a color to the legend, adding a text, adding line width, adding a line style. There are multiple line styles that you can call and these are '_', '_ _', '_ .' or ':'
+
+```
+plt.plot(x.frame, y.frame, label='text')
+plt.plot(a.frame, b.frame, label = 'test')
+plt.xlabel("string")
+plt.ylabel ("label")
+plt.text(xcoord, ycoord, "Title of the text")
+plt.plot(x,y, linewidth=1)
+plt.plot(x,y,linestyle= '_'
+plt.title("Title=, fontsize=10)
+plt.legend(, colour= "green")
+plt.show()
+``` 
+
+This is all for now, next will be the jupyter notebook with the figures and streamlit app to show how these functions can be embeded into streamlit. 
